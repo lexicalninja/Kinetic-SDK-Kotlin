@@ -1,0 +1,3 @@
+rootProject.name='Kinetic-SDK'
+include ':app'
+include ':kinetic-sdk'
