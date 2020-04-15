@@ -3,7 +3,7 @@ package com.lexicalninja.kinetic_sdk.inride
 import com.lexicalninja.kinetic_sdk.exceptions.InvalidDataException
 import com.lexicalninja.kinetic_sdk.inride.ConfigData.SensorUpdateRate
 
-object InRide {
+class InRide {
 
     object DeviceInformation {
         const val UUID = "0000180a-0000-1000-8000-00805f9b34fb"
@@ -23,31 +23,40 @@ object InRide {
         }
     }
 
-    @Throws(InvalidDataException::class) fun ProcessConfigurationData(data: ByteArray): ConfigData {
-        return DataProcessor.ProcessConfigurationData(data)
-    }
+    companion object {
+        @Throws(InvalidDataException::class)
+        fun ProcessConfigurationData(data: ByteArray): ConfigData {
+            return DataProcessor.ProcessConfigurationData(data)
+        }
 
-    @Throws(InvalidDataException::class) fun ProcessPowerData(data: ByteArray, systemId: ByteArray): PowerData {
-        return DataProcessor.ProcessPowerData(data, systemId)
-    }
+        @Throws(InvalidDataException::class)
+        fun ProcessPowerData(data: ByteArray, systemId: ByteArray): PowerData {
+            return DataProcessor.ProcessPowerData(data, systemId)
+        }
 
-    @Throws(InvalidDataException::class) fun StartCalibrationCommandData(systemId: ByteArray): ByteArray {
-        return CommandFactory.StartCalibrationCommandData(systemId)
-    }
+        @Throws(InvalidDataException::class)
+        fun StartCalibrationCommandData(systemId: ByteArray): ByteArray {
+            return CommandFactory.StartCalibrationCommandData(systemId)
+        }
 
-    @Throws(InvalidDataException::class) fun StopCalibrationCommandData(systemId: ByteArray): ByteArray {
-        return CommandFactory.StopCalibrationCommandData(systemId)
-    }
+        @Throws(InvalidDataException::class)
+        fun StopCalibrationCommandData(systemId: ByteArray): ByteArray {
+            return CommandFactory.StopCalibrationCommandData(systemId)
+        }
 
-    @Throws(InvalidDataException::class) fun SetSpindownTimeCommandData(seconds: Double, systemId: ByteArray): ByteArray {
-        return CommandFactory.SetSpindownTimeCommandData(seconds, systemId)
-    }
+        @Throws(InvalidDataException::class)
+        fun SetSpindownTimeCommandData(seconds: Double, systemId: ByteArray): ByteArray {
+            return CommandFactory.SetSpindownTimeCommandData(seconds, systemId)
+        }
 
-    @Throws(InvalidDataException::class) fun ConfigureSensorCommandData(updateRate: SensorUpdateRate, systemId: ByteArray): ByteArray {
-        return CommandFactory.ConfigureSensorCommandData(updateRate, systemId)
-    }
+        @Throws(InvalidDataException::class)
+        fun ConfigureSensorCommandData(updateRate: SensorUpdateRate, systemId: ByteArray): ByteArray {
+            return CommandFactory.ConfigureSensorCommandData(updateRate, systemId)
+        }
 
-    @Throws(InvalidDataException::class) fun SetPeripheralNameCommandData(name: String, systemId: ByteArray): ByteArray {
-        return CommandFactory.SetPeripheralNameCommandData(name, systemId)
+        @Throws(InvalidDataException::class)
+        fun SetPeripheralNameCommandData(name: String, systemId: ByteArray): ByteArray {
+            return CommandFactory.SetPeripheralNameCommandData(name, systemId)
+        }
     }
 }
