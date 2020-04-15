@@ -35,9 +35,9 @@ open class KineticSerializer {
         fun readConfig(bytes: ByteArray): KineticConfig? {
             return if (bytes.size > 7) {
                 val config = KineticConfig()
-                config.systemStatus = bytes[0].toLong() or bytes[1].toLong() shl 8
+                config.systemStatus = bytes[0].toLong() or (bytes[1].toLong() shl 8)
                 config.calibrationState = bytes[2].toInt()
-                config.spindownTime = bytes[3].toLong() or bytes[4].toLong() shl 8
+                config.spindownTime = bytes[3].toLong() or ( bytes[4].toLong() shl 8)
                 config.firmwareUpdateState = bytes[5].toInt()
                 config.bleRevision = bytes[6].toInt()
                 config.antirattleRamp = bytes[7].toInt()
@@ -62,14 +62,14 @@ open class KineticSerializer {
                 } else {
                     debug.mode = KineticMode.Erg
                 }
-                debug.targetResistance = bytes[1].toLong() or bytes[2].toLong() shl 8
-                debug.actualResistance = bytes[3].toLong() or bytes[4].toLong() shl 8
-                debug.targetPosition = bytes[5].toLong() or bytes[6].toLong() shl 8
-                debug.actualPosition = bytes[7].toLong() or bytes[8].toLong() shl 8
-                debug.tempSensorValue = bytes[9].toLong() or bytes[10].toLong() shl 8
-                debug.tempDieValue = bytes[11].toLong() or bytes[12].toLong() shl 8
-                debug.tempCalculatated = bytes[13].toLong() or bytes[14].toLong() shl 8
-                debug.homeAccuracy = bytes[15].toLong() or bytes[16].toLong() shl 8
+                debug.targetResistance = bytes[1].toLong() or (bytes[2].toLong() shl 8)
+                debug.actualResistance = bytes[3].toLong() or (bytes[4].toLong() shl 8)
+                debug.targetPosition = bytes[5].toLong() or (bytes[6].toLong() shl 8)
+                debug.actualPosition = bytes[7].toLong() or (bytes[8].toLong() shl 8)
+                debug.tempSensorValue = bytes[9].toLong() or (bytes[10].toLong() shl 8)
+                debug.tempDieValue = bytes[11].toLong() or (bytes[12].toLong() shl 8)
+                debug.tempCalculatated = bytes[13].toLong() or (bytes[14].toLong() shl 8)
+                debug.homeAccuracy = bytes[15].toLong() or (bytes[16].toLong() shl 8)
                 debug.bleBuild = bytes[17].toInt()
                 debug
             } else null
